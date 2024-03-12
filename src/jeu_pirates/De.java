@@ -1,9 +1,17 @@
 package jeu_pirates;
 
-public class De {
-	private int nbFace;
+import java.util.Random;
 
-	public De(int nbFace) {
-		this.nbFace = nbFace;
-	}
+public class De {
+    private int nbFaces;
+
+    public De(int nbFaces) {
+        this.nbFaces = nbFaces;
+    }
+
+    public int lancer() {
+        Random rand = new Random();
+        return rand.nextInt(nbFaces) + 1;
+    }
 }
+
