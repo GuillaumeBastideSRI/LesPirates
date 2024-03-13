@@ -9,7 +9,7 @@ public class Main {
 		CasePotion casePotion = new CasePotion(30);
 		System.out.println("Le Kraken est à la case : " + caseKraken.PositionKrakenAleatoire());
 		System.out.println("Le Perroquet est à la case : " + casePerroquet.PositionPerroquetAleatoire());
-		System.out.println("La Potion est à la case : " + casePotion.PositionPotionAleatoire());
+		System.out.println("La Potion est cachée sur la carte et peut être trouvée par le Perroquet");
 		Pion pionRouge = new Pion("Rouge");
 		int deResultatRouge = de.lancer();
 		System.out.println("Le résultat du dé du joueur rouge est : " + deResultatRouge);
