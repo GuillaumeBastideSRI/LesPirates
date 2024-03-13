@@ -4,8 +4,8 @@ public class Main {
 	public static void main(String[] args) {
 		Plateau plateau = new Plateau(6, 5);
 		De de = new De(6);
-		Kraken kraken = new Kraken(30);
-		System.out.println("Le Kraken est à la case : " + kraken.PositionKrakenAleatoire());
+		CaseKraken cases = new CaseKraken(30);
+		System.out.println("Le Kraken est à la case : " + cases.PositionKrakenAleatoire());
 		Pion pionRouge = new Pion("Rouge");
 		int deResultatRouge = de.lancer();
 		System.out.println("Le résultat du dé du joueur rouge est : " + deResultatRouge);
