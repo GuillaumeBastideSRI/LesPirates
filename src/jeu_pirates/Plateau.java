@@ -36,14 +36,25 @@ public class Plateau {
 		}
 	}
 
-	public void afficherPlateauAvecPion(Pion pion) {
+	public void afficherPlateauAvecElements(Pion pionRouge, Pion pionBleu, CaseKraken kraken, CasePerroquet perroquet) {
 	    String[][] plateauAvecPion = new String[nbLignes][nbColonnes];
-	    int positionPion = pion.getPosition();
+	    int positionPionRouge = pionRouge.getPosition();
+	    int positionPionBleu = pionBleu.getPosition();
+	    int positionKraken = kraken.getPositionKraken();
+	    int positionPerroquet = perroquet.getPositionPerroquet();
 
 	    for (int ligne = 0; ligne < nbLignes; ligne++) {
 	        for (int colonne = 0; colonne < nbColonnes; colonne++) {
-	            if (cases[ligne][colonne] == positionPion) {
-	                plateauAvecPion[ligne][colonne] = "PR";
+	            if (cases[ligne][colonne] == positionPionRouge && cases[ligne][colonne] == positionPionBleu) {
+	                plateauAvecPion[ligne][colonne] = "PP"; // Les deux pions sont sur la même case
+	            } else if (cases[ligne][colonne] == positionPionRouge) {
+	                plateauAvecPion[ligne][colonne] = "PR"; // Seul le pion rouge est présent
+	            } else if (cases[ligne][colonne] == positionPionBleu) {
+	                plateauAvecPion[ligne][colonne] = "PB"; // Seul le pion bleu est présent
+	            } else if (cases[ligne][colonne] == positionKraken) {
+	                plateauAvecPion[ligne][colonne] = "K"; // Le Kraken est présent
+	            } else if (cases[ligne][colonne] == positionPerroquet) {
+	                plateauAvecPion[ligne][colonne] = "P"; // Le Perroquet est présent
 	            } else {
 	                plateauAvecPion[ligne][colonne] = Integer.toString(cases[ligne][colonne]);
 	            }
