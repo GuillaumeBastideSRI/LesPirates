@@ -8,15 +8,22 @@ public class CaseKraken {
 
     public CaseKraken(int nbCases) {
         this.nbCases = nbCases;
-        this.positionKraken = PositionKrakenAleatoire();
+        this.positionKraken = positionKrakenAleatoire();
     }
 
-    private int PositionKrakenAleatoire() {
-        Random rand = new Random();
-        return rand.nextInt(nbCases) + 1;
+    private int positionKrakenAleatoire() {
+        return new Random().nextInt(nbCases) + 1;
     }
 
     public int getPositionKraken() {
         return positionKraken;
     }
+
+    public void attaquerPirate(Pirate pirate) {
+        if (pirate.getPosition() == positionKraken) {
+            pirate.perdreVie(4);
+            System.out.println("Le Kraken attaque le pirate " + pirate.getNom() + " !");
+        }
+    }
 }
+
