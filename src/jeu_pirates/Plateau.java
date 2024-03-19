@@ -46,15 +46,15 @@ public class Plateau {
 	    for (int ligne = 0; ligne < nbLignes; ligne++) {
 	        for (int colonne = 0; colonne < nbColonnes; colonne++) {
 	            if (cases[ligne][colonne] == positionPionRouge && cases[ligne][colonne] == positionPionBleu) {
-	                plateauAvecPion[ligne][colonne] = "PP"; // Les deux pions sont sur la même case
+	                plateauAvecPion[ligne][colonne] = "D";
 	            } else if (cases[ligne][colonne] == positionPionRouge) {
-	                plateauAvecPion[ligne][colonne] = "PR"; // Seul le pion rouge est présent
+	                plateauAvecPion[ligne][colonne] = "PR";
 	            } else if (cases[ligne][colonne] == positionPionBleu) {
-	                plateauAvecPion[ligne][colonne] = "PB"; // Seul le pion bleu est présent
+	                plateauAvecPion[ligne][colonne] = "PB";
 	            } else if (cases[ligne][colonne] == positionKraken) {
-	                plateauAvecPion[ligne][colonne] = "K"; // Le Kraken est présent
+	                plateauAvecPion[ligne][colonne] = "K";
 	            } else if (cases[ligne][colonne] == positionPerroquet) {
-	                plateauAvecPion[ligne][colonne] = "P"; // Le Perroquet est présent
+	                plateauAvecPion[ligne][colonne] = "P";
 	            } else {
 	                plateauAvecPion[ligne][colonne] = Integer.toString(cases[ligne][colonne]);
 	            }
