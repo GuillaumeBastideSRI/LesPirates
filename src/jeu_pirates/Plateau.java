@@ -37,27 +37,27 @@ public class Plateau {
 	}
 
 	public void afficherPlateauAvecPion(Pion pion) {
-		int[][] plateauAvecPion = new int[nbLignes][nbColonnes];
-		int positionPion = pion.getPosition();
+	    String[][] plateauAvecPion = new String[nbLignes][nbColonnes];
+	    int positionPion = pion.getPosition();
 
-		for (int ligne = 0; ligne < nbLignes; ligne++) {
-			for (int colonne = 0; colonne < nbColonnes; colonne++) {
-				if (cases[ligne][colonne] == positionPion) {
-					plateauAvecPion[ligne][colonne] = 0;
-				} else {
-					plateauAvecPion[ligne][colonne] = cases[ligne][colonne];
-				}
-			}
-		}
+	    for (int ligne = 0; ligne < nbLignes; ligne++) {
+	        for (int colonne = 0; colonne < nbColonnes; colonne++) {
+	            if (cases[ligne][colonne] == positionPion) {
+	                plateauAvecPion[ligne][colonne] = "PR";
+	            } else {
+	                plateauAvecPion[ligne][colonne] = Integer.toString(cases[ligne][colonne]);
+	            }
+	        }
+	    }
 
-		for (int ligne = 0; ligne < nbLignes; ligne++) {
-			for (int colonne = 0; colonne < nbColonnes; colonne++) {
-				System.out.print(plateauAvecPion[ligne][colonne] + "\t");
-			}
-			System.out.println();
-		}
+	    for (int ligne = 0; ligne < nbLignes; ligne++) {
+	        for (int colonne = 0; colonne < nbColonnes; colonne++) {
+	            System.out.print(plateauAvecPion[ligne][colonne] + "\t");
+	        }
+	        System.out.println();
+	    }
 	}
-
+	
 	public int[][] getCases() {
 		return cases;
 	}
