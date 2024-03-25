@@ -1,30 +1,93 @@
 package jeu_pirates;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continuer = true;
+
+        while (continuer) {
+            jouerUnePartie(scanner);
+        }
+
+        System.out.println("Merci d'avoir jou√© !");
+        scanner.close();
+    }
+
+    public static void jouerUnePartie(Scanner scanner) {
         int nombreCases = 30;
         Plateau plateau = new Plateau(6, 5);
         De de = new De(6);
         CaseKraken kraken = new CaseKraken(nombreCases);
         CasePerroquet perroquet = new CasePerroquet(nombreCases);
 
-        System.out.println("RËgles du jeu");
-        System.out.println("Le Kraken est ‡ la case : " + kraken.getPositionKraken());
-        System.out.println("Le Perroquet est ‡ la case : " + perroquet.getPositionPerroquet());
-        System.out.println("La Potion est cachÈe sur la carte et peut Ítre trouvÈe par le Perroquet");
+        System.out.println("R√®gles du jeu");
+        System.out.println("Le Kraken est √† la case : " + kraken.getPositionKraken());
+        System.out.println("Le Perroquet est √† la case : " + perroquet.getPositionPerroquet());
+        System.out.println("La Potion est cach√©e sur la carte et peut √™tre trouv√©e par le Perroquet");
 
         Pion pionRouge = new Pion("Rouge");
-        int deResultatRouge = de.lancer();
-        System.out.println("Le rÈsultat du dÈ du joueur rouge est : " + deResultatRouge);
-        pionRouge.avancer(deResultatRouge);
-        System.out.println("Le pion rouge est maintenant ‡ la case : " + pionRouge.getPosition());
-
         Pion pionBleu = new Pion("Bleu");
-        int deResultatBleu = de.lancer();
-        System.out.println("Le rÈsultat du dÈ du joueur bleu est : " + deResultatBleu);
-        pionBleu.avancer(deResultatBleu);
-        System.out.println("Le pion bleu est maintenant ‡ la case : " + pionBleu.getPosition());
 
-        plateau.afficherPlateauAvecElements(pionRouge, pionBleu, kraken, perroquet);
+        while (true) {
+            if (pionRouge != null) {
+                System.out.println("Appuyez sur Entr√©e pour que le joueur rouge lance le d√© et effectue son tour.");
+                scanner.nextLine();
+                int deResultatRouge = de.lancer();
+                System.out.println("Le r√©sultat du d√© du joueur rouge est : " + deResultatRouge);
+
+                if (pionRouge.getPosition() + deResultatRouge > nombreCases) {
+                    System.out.println("Le joueur rouge a atteint la derni√®re case et a remport√© la partie !");
+                    break;
+                } else {
+                    pionRouge.avancer(deResultatRouge);
+                    System.out.println("Le pion rouge est maintenant √† la case : " + pionRouge.getPosition());
+                }
+
+                if (pionRouge.getPosition() == kraken.getPositionKraken()) {
+                    System.out.println("Le Kraken attaque le joueur rouge !");
+                    pionRouge = null;
+                    System.out.println("Le joueur rouge est mort !");
+                }
+            }
+
+            if (pionRouge == null || pionRouge.getPosition() == nombreCases) {
+                break; 
+            }
+
+            if (pionBleu != null) {
+                System.out.println("Appuyez sur Entr√©e pour que le joueur bleu lance le d√© et effectue son tour.");
+                scanner.nextLine(); 
+                int deResultatBleu = de.lancer();
+                System.out.println("Le r√©sultat du d√© du joueur bleu est : " + deResultatBleu);
+
+                if (pionBleu.getPosition() + deResultatBleu > nombreCases) {
+                    System.out.println("Le joueur bleu a atteint la derni√®re case et a remport√© la partie !");
+                    break; 
+                } else {
+                    pionBleu.avancer(deResultatBleu);
+                    System.out.println("Le pion bleu est maintenant √† la case : " + pionBleu.getPosition());
+                }
+
+                if (pionBleu.getPosition() == kraken.getPositionKraken()) {
+                    System.out.println("Le Kraken attaque le joueur bleu !");
+                    pionBleu = null;
+                    System.out.println("Le joueur bleu est mort !");
+                }
+            }
+
+            if (pionBleu == null || pionBleu.getPosition() == nombreCases) {
+                break; 
+            }
+        }
+
+        System.out.println("Voulez-vous recommencer la partie ? (O/N)");
+        String reponse = scanner.nextLine().toUpperCase();
+        if (reponse.equals("O")) {
+            jouerUnePartie(scanner);
+        }
     }
+
 }
+
