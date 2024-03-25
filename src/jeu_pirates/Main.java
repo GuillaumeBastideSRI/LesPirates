@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean continuer = true;
-
-        while (continuer) {
+        while (true) {
             jouerUnePartie(scanner);
+            System.out.println("Voulez-vous recommencer une partie ? (O/N)");
+            String reponse = scanner.nextLine().toUpperCase();
+            if (!reponse.equals("O")) {
+                break;
+            }
         }
-
-        System.out.println("Merci d'avoir joué !");
         scanner.close();
     }
 
@@ -48,14 +49,24 @@ public class Main {
 
                 if (pionRouge.getPosition() == kraken.getPositionKraken()) {
                     System.out.println("Le Kraken attaque le joueur rouge !");
-                    pionRouge = null; 
+                    pionRouge = null;
                     System.out.println("Le joueur rouge est mort !");
                 }
 
                 if (pionRouge != null && pionRouge.getPosition() == perroquet.getPositionPerroquet()) {
                     System.out.println("Le joueur rouge a trouvé le perroquet !");
-                    System.out.println("Le perroquet dit : La potion est à la case " + perroquet.getPositionPotion());
+                    System.out.println("Le perroquet dit : Je vais chercher la potion à a case " + perroquet.getPositionPotion());
+                    System.out.println("Voulez-vous utiliser la potion ? (O/N)");
+                    String reponsePotion = scanner.nextLine().toUpperCase();
+                    if (reponsePotion.equals("O")) {
+                        pionRouge.utiliserPotion();
+                        System.out.println("Le joueur rouge a utilisé la potion et est maintenant invincible !");
+                    }
                 }
+            }
+
+            if (pionRouge == null || pionRouge.getPosition() >= nombreCases) {
+                break;
             }
 
             if (pionBleu != null) {
@@ -63,7 +74,7 @@ public class Main {
                 scanner.nextLine();
                 int deResultatBleu = de.lancer();
                 System.out.println("Le résultat du dé du joueur bleu est : " + deResultatBleu);
-                
+
                 int nouvellePositionBleu = pionBleu.getPosition() + deResultatBleu;
                 if (nouvellePositionBleu >= nombreCases) {
                     System.out.println("Le joueur bleu a atteint la dernière case et a remporté la partie !");
@@ -81,25 +92,19 @@ public class Main {
 
                 if (pionBleu != null && pionBleu.getPosition() == perroquet.getPositionPerroquet()) {
                     System.out.println("Le joueur bleu a trouvé le perroquet !");
-                    System.out.println("Le perroquet dit : La potion est à la case " + perroquet.getPositionPotion());
+                    System.out.println("Le perroquet dit : Je vais chercher la potion à la case " + perroquet.getPositionPotion());
+                    System.out.println("Voulez-vous utiliser la potion ? (O/N)");
+                    String reponsePotion = scanner.nextLine().toUpperCase();
+                    if (reponsePotion.equals("O")) {
+                        pionBleu.utiliserPotion();
+                        System.out.println("Le joueur bleu a utilisé la potion et est maintenant invincible !");
+                    }
                 }
             }
 
-            if ((pionRouge == null && pionBleu == null) || (pionRouge != null && pionRouge.getPosition() >= nombreCases) || (pionBleu != null && pionBleu.getPosition() >= nombreCases)) {
-                if (pionRouge != null && pionRouge.getPosition() >= nombreCases) {
-                    System.out.println("Le joueur rouge a gagné !");
-                }
-                if (pionBleu != null && pionBleu.getPosition() >= nombreCases) {
-                    System.out.println("Le joueur bleu a gagné !");
-                }
+            if (pionBleu == null || pionBleu.getPosition() >= nombreCases) {
                 break;
             }
-        }
-
-        System.out.println("Voulez-vous recommencer la partie ? (O/N)");
-        String reponse = scanner.nextLine().toUpperCase();
-        if (reponse.equals("O")) {
-            jouerUnePartie(scanner);
         }
     }
 }
