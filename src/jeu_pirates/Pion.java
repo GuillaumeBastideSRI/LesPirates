@@ -16,4 +16,10 @@ public class Pion {
     public int getPosition() {
         return position;
     }
+        
+    public void utiliserPotion() {
+    	this.estInvincible = true;
+    }
+    
+    private boolean estInvincible;
 }
