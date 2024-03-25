@@ -7,11 +7,13 @@ import java.util.Random;
 public class CasePerroquet {
     private int nbCases;
     private int positionPerroquet;
+    private int positionPotion;
     private List<Pion> joueursInvincibles;
 
     public CasePerroquet(int nbCases) {
         this.nbCases = nbCases;
         this.positionPerroquet = positionPerroquetAleatoire();
+        this.positionPotion = positionPotionAleatoire(); 
         this.joueursInvincibles = new ArrayList<>();
     }
 
@@ -19,8 +21,20 @@ public class CasePerroquet {
         return new Random().nextInt(nbCases) + 1;
     }
 
+    private int positionPotionAleatoire() {
+        int positionPotion;
+        do {
+            positionPotion = new Random().nextInt(nbCases) + 1;
+        } while (positionPotion == positionPerroquet);
+        return positionPotion;
+    }
+
     public int getPositionPerroquet() {
         return positionPerroquet;
+    }
+    
+    public int getPositionPotion() {
+        return positionPotion;
     }
 
     public void rendreInvincible(Pion joueur) {
