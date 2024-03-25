@@ -13,7 +13,7 @@ public class CasePerroquet {
     public CasePerroquet(int nbCases) {
         this.nbCases = nbCases;
         this.positionPerroquet = positionPerroquetAleatoire();
-        this.positionPotion = positionPotionAleatoire(); 
+        this.positionPotion = positionPotionAleatoire();
         this.joueursInvincibles = new ArrayList<>();
     }
 
@@ -32,10 +32,6 @@ public class CasePerroquet {
     public int getPositionPerroquet() {
         return positionPerroquet;
     }
-    
-    public int getPositionPotion() {
-        return positionPotion;
-    }
 
     public void rendreInvincible(Pion joueur) {
         joueursInvincibles.add(joueur);
@@ -47,5 +43,9 @@ public class CasePerroquet {
 
     public void retirerInvincibilite(Pion joueur) {
         joueursInvincibles.remove(joueur);
+    }
+    
+    public int getPositionPotion() {
+        return positionPotion;
     }
 }
