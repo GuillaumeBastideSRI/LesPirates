@@ -24,8 +24,8 @@ public class Main {
         CasePerroquet perroquet = new CasePerroquet(nombreCases);
 
         System.out.println("Règles du jeu");
-        System.out.println("Le Kraken est à la case : " + kraken.getPositionKraken());
-        System.out.println("Le Perroquet est à la case : " + perroquet.getPositionPerroquet());
+        System.out.println("Le Kraken est à la case : " + kraken.getPosition());
+        System.out.println("Le Perroquet est à la case : " + perroquet.getPosition());
         System.out.println("La Potion est cachée sur la carte et peut être trouvée par le Perroquet");
 
         Pion pionRouge = new Pion("Rouge");
@@ -47,15 +47,15 @@ public class Main {
                     System.out.println("Le pion rouge est maintenant à la case : " + pionRouge.getPosition());
                 }
 
-                if (pionRouge.getPosition() == kraken.getPositionKraken()) {
+                if (pionRouge.getPosition() == kraken.getPosition()) {
                     System.out.println("Le Kraken attaque le joueur rouge !");
                     pionRouge = null;
                     System.out.println("Le joueur rouge est mort !");
                 }
 
-                if (pionRouge != null && pionRouge.getPosition() == perroquet.getPositionPerroquet()) {
+                if (pionRouge != null && pionRouge.getPosition() == perroquet.getPosition()) {
                     System.out.println("Le joueur rouge a trouvé le perroquet !");
-                    System.out.println("Le perroquet dit : Je vais chercher la potion à a case " + perroquet.getPositionPotion());
+                    System.out.println("Le perroquet dit : Je vais chercher la potion à a case " + perroquet.getPosition());
                     System.out.println("Voulez-vous utiliser la potion ? (O/N)");
                     String reponsePotion = scanner.nextLine().toUpperCase();
                     if (reponsePotion.equals("O")) {
@@ -84,15 +84,15 @@ public class Main {
                     System.out.println("Le pion bleu est maintenant à la case : " + pionBleu.getPosition());
                 }
 
-                if (pionBleu.getPosition() == kraken.getPositionKraken()) {
+                if (pionBleu.getPosition() == kraken.getPosition()) {
                     System.out.println("Le Kraken attaque le joueur bleu !");
                     pionBleu = null;
                     System.out.println("Le joueur bleu est mort !");
                 }
 
-                if (pionBleu != null && pionBleu.getPosition() == perroquet.getPositionPerroquet()) {
+                if (pionBleu != null && pionBleu.getPosition() == perroquet.getPosition()) {
                     System.out.println("Le joueur bleu a trouvé le perroquet !");
-                    System.out.println("Le perroquet dit : Je vais chercher la potion à la case " + perroquet.getPositionPotion());
+                    System.out.println("Le perroquet dit : Je vais chercher la potion à la case " + perroquet.getPosition());
                     System.out.println("Voulez-vous utiliser la potion ? (O/N)");
                     String reponsePotion = scanner.nextLine().toUpperCase();
                     if (reponsePotion.equals("O")) {
