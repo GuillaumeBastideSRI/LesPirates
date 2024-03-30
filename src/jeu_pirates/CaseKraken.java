@@ -1,29 +1,14 @@
 package jeu_pirates;
 
-import java.util.Random;
-
-public class CaseKraken {
-    private int nbCases;
-    private int positionKraken;
-
+public class CaseKraken extends Case {
     public CaseKraken(int nbCases) {
-        this.nbCases = nbCases;
-        this.positionKraken = positionKrakenAleatoire();
-    }
-
-    private int positionKrakenAleatoire() {
-        return new Random().nextInt(nbCases) + 1;
-    }
-
-    public int getPositionKraken() {
-        return positionKraken;
+        super(nbCases);
     }
 
     public void attaquerPirate(Pirate pirate) {
-        if (pirate.getPosition() == positionKraken) {
-            pirate.perdreVie(4);
+        if (pirate.getPosition() == position) {
+            pirate.perdreVie(5);
             System.out.println("Le Kraken attaque le pirate " + pirate.getNom() + " !");
         }
     }
 }
-
