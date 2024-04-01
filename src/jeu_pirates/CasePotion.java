@@ -1,7 +1,16 @@
 package jeu_pirates;
 
-public class CasePotion extends Case {
+import java.util.Random;
+
+public class CasePotion {
+    private int nbCases;
+
     public CasePotion(int nbCases) {
-        super(nbCases);
+        this.nbCases = nbCases;
+    }
+
+    public int PositionPotionAleatoire() {
+        Random rand = new Random();
+		return rand.nextInt(nbCases) + 1;
     }
 }
