@@ -1,12 +1,12 @@
 package jeu_pirates;
 
-public class Pion {
+public class Pion extends Pirate {
     private String couleur;
-    private int position;
+    private int position = 1;
 
-    public Pion(String couleur) {
+    public Pion(String couleur, String nom) {
         this.couleur = couleur;
-        this.position = 1;
+        super (nom);
     }
 
     public void avancer(int nbCases) {
