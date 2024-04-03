@@ -3,10 +3,11 @@ package jeu_pirates;
 public class Pion extends Pirate {
     private String couleur;
     private int position = 1;
+    private boolean estInvincible = false;
 
-    public Pion(String couleur, String nom) {
+    public Pion(String nom, String couleur) {
+        super(nom);
         this.couleur = couleur;
-        super (nom);
     }
 
     public void avancer(int nbCases) {
@@ -16,10 +17,13 @@ public class Pion extends Pirate {
     public int getPosition() {
         return position;
     }
-        
+
     public void utiliserPotion() {
-    	this.estInvincible = true;
+        estInvincible = true;
     }
-    
-    private boolean estInvincible;
+
+    @Override
+    protected boolean estInvincible() {
+        return estInvincible;
+    }
 }

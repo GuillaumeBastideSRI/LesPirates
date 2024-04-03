@@ -14,4 +14,3 @@ public class De {
         return rand.nextInt(nbFaces) + 1;
     }
 }
-

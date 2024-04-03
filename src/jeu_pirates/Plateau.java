@@ -40,8 +40,8 @@ public class Plateau {
 	    String[][] plateauAvecPion = new String[nbLignes][nbColonnes];
 	    int positionPionRouge = pionRouge.getPosition();
 	    int positionPionBleu = pionBleu.getPosition();
-	    int positionKraken = kraken.getPosition();
-	    int positionPerroquet = perroquet.getPosition();
+	    int positionKraken = kraken.getPositionKraken();
+	    int positionPerroquet = perroquet.getPositionPerroquet();
 
 	    for (int ligne = 0; ligne < nbLignes; ligne++) {
 	        for (int colonne = 0; colonne < nbColonnes; colonne++) {

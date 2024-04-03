@@ -21,8 +21,7 @@ public class CaseKraken {
 
     public void attaquerPirate(Pirate pirate) {
         if (pirate.getPosition() == positionKraken) {
-            pirate.perdreVie(4);
+            pirate.perdreVie(5);
         }
     }
 }
-
